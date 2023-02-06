@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const blogRoutes = require("./routes/blogRoutes");
+
 const app = express();
 
 app.listen(3000);
@@ -19,8 +21,12 @@ app.get("/", (req, res) => {
   res.render("index", { title: " Home" });
 });
 
+app.get("/create", (req, res) => {
+  res.render("create", { title: " Create" });
+});
+
 app.get("/blogs", (req, res) => {
-  res.render("blogs", { title: " Blog" });
+  res.render("blogs", { title: " Blogs" });
 });
 
 app.get("/destination", (req, res) => {
@@ -29,4 +35,8 @@ app.get("/destination", (req, res) => {
 
 app.get("/contact", (req, res) => {
   res.render("contact", { title: " Contact" });
+});
+
+app.use((req, res) => {
+  res.status(404).render("404", { title: "404" });
 });
