@@ -373,3 +373,7 @@ textarea {
 .blog_content {
   margin-left: 20px;
 }
+
+.errorHeading {
+  font-size: 6rem;
+}
