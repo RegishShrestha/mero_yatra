@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
-const blogRoutes = require("./routes/blogRoutes");
+const Blog = require("./models/blog");
+// const blogRoutes = require("./routes/blogRoutes");
 
 const app = express();
 
@@ -36,12 +37,14 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/blogs", (req, res) => {
-  const blogs = [
-    { title: "Regish Birthday", snippet: "today is regish birthday" },
-    { title: "Regish Birthday", snippet: "today is regish birthday" },
-    { title: "Regish Birthday", snippet: "today is regish birthday" },
-  ];
-  res.render("blogs", { title: " Blogs", blogs });
+  Blog.find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render("blogs", { title: " Blogs", blogs: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.get("/destination", (req, res) => {
