@@ -5,7 +5,17 @@ const blogRoutes = require("./routes/blogRoutes");
 
 const app = express();
 
-app.listen(3000);
+const dbURI =
+  "mongodb+srv://netninja:1234@nodetuts.gxyk5lo.mongodb.net/node-tuts?retryWrites=true&w=majority";
+
+// Use to remove warning in terminal
+mongoose.set("strictQuery", true);
+mongoose
+  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    app.listen(3000);
+  })
+  .catch((err) => console.log(err));
 
 app.set("view engine", "ejs");
 
@@ -26,7 +36,12 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/blogs", (req, res) => {
-  res.render("blogs", { title: " Blogs" });
+  const blogs = [
+    { title: "Regish Birthday", snippet: "today is regish birthday" },
+    { title: "Regish Birthday", snippet: "today is regish birthday" },
+    { title: "Regish Birthday", snippet: "today is regish birthday" },
+  ];
+  res.render("blogs", { title: " Blogs", blogs });
 });
 
 app.get("/destination", (req, res) => {
