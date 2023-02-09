@@ -29,7 +29,9 @@ figure {
   font-weight: normal;
   margin: 0;
 }
-
+textarea {
+  height: 120px;
+}
 button,
 input {
   outline: none;
@@ -354,10 +356,6 @@ input {
 .create-blog label {
   display: block;
   margin-top: 24px;
-}
-
-textarea {
-  height: 120px;
 }
 
 .create-blog button {

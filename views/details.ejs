@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yatra | <%= title %></title>
+    <style>
+      #bg {
+        /*background-image: url("./images/bggggg.jpg"); */
+        background-image: url("../images/bggggg.jpg");
+
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+        position: fixed;
+      }
+
+      #dimmed-bg {
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        background-color: rgba(20, 20, 20, 0.86);
+        top: 0;
+        left: 0;
+        transition: all 0.6s;
+        transform: translate(0);
+        visibility: visible;
+      }
+      #full-site {
+        visibility: visible;
+        overflow: visible;
+        max-height: auto;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      #footer {
+        color: white;
+        padding: 2.5rem 0;
+        background-color: rgba(13, 13, 13, 0.48);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8rem;
+      }
+
+      #footer h5 {
+        font-size: 1.875rem;
+        margin: 1.875rem 0;
+      }
+
+      #footer hr {
+        width: 4%;
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        border-top: none;
+      }
+
+      #footer h6 {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+      }
+
+      #footer #social-icons {
+        padding: 0.75rem 0;
+      }
+
+      #footer #social-icons img {
+        width: 2.25rem;
+        padding: 0 0.25rem;
+        transition: all 0.2s;
+      }
+
+      #footer #social-icons img:hover {
+        transform: scale(1.2);
+      }
+
+      #above-fold {
+        position: relative;
+        z-index: 12;
+        color: white;
+        padding-left: 92px;
+        padding-top: 62px;
+        box-sizing: border-box;
+        width: 94%;
+        height: 100vh;
+        display: inline-block;
+        opacity: 1;
+        transition: all 1s 0.5s;
+      }
+
+      #above-fold nav {
+        display: inline-block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.38);
+        padding-bottom: 1.125rem;
+        padding-right: 4.5rem;
+      }
+
+      #above-fold nav li {
+        display: inline-block;
+        padding: 0 1.875rem;
+      }
+
+      #above-fold nav li:first-child {
+        padding-left: 0;
+      }
+
+      #above-fold nav a {
+        transition: opacity 0.1s;
+      }
+
+      #above-fold nav a:hover {
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="bg"></div>
+    <div id="dimmed-bg"></div>
+    <section id="full-site">
+      <section id="above-fold">
+        <%- include('./partials/nav.ejs') %>
+
+        <div class="details content">
+          <h2><%= blogg.title %></h2>
+          <div class="content">
+            <p><%= blogg.body %></p>
+          </div>
+          <a class="delete" data-doc="<%= blogg._id %>">delete</a>
+        </div>
+      </section>
+      <%- include('./partials/footer.ejs') %>
+    </section>
+  </body>
+</html>
